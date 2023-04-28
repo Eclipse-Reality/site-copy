@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Site Copy Vanilla JS</title>
+  </head>
+  <body>
+
+    <!--Provider 1, uses one json file-->
+    <site-copy-provider lang="en" siteid="vanilla-js-testing" url="/data.json" filterkeys="components.headerBanner">
+      <header>
+        <h1>
+          <span data-copy="mainText.word1"></span>
+          <span data-copy="mainText.word2"></span>
+          <span data-copy="mainText.word3"></span>
+        </h1>
+        <div>
+            <p data-copy="subText"></p>
+        </div>
+        <!--This div is just for the cool background-->
+        <div class="absolute top-[0] w-full h-full z-[-1]">
+          <video id="34178e5d-60e8-ea3c-8d69-58db54f0a3d4-video" autoplay="" loop="" style="height:100%;width:100%;object-fit:cover;background-image:url(&quot;https://uploads-ssl.webflow.com/63011725b0ee9116afebcd26/6398e737664015ea0e576a06_EclipseRealityBackground-poster-00001.jpg&quot;)" muted="" playsinline="" data-wf-ignore="true" data-object-fit="cover">
+            <source src="https://uploads-ssl.webflow.com/63011725b0ee9116afebcd26/6398e737664015ea0e576a06_EclipseRealityBackground-transcode.mp4" data-wf-ignore="true">
+            <source src="https://uploads-ssl.webflow.com/63011725b0ee9116afebcd26/6398e737664015ea0e576a06_EclipseRealityBackground-transcode.webm" data-wf-ignore="true">
+          </video>
+        </div>
+      </header>
+    </site-copy-provider>
+    <!--End Provider 1-->
+
+    <!--Provider 2, uses a second json file-->
+    <site-copy-provider lang="en" siteid="vanilla-js-testing-2" url="/data2.json">
+      <div class="py-[50px] flex justify-center gap-[50px]">
+        <button data-lang="en" data-copy="cta1"></button>
+        <button data-lang="fr" data-copy="cta2"></button>
+      </div>
+    </site-copy-provider>
+    <!--End Provider 2-->
+
+    <!--Provider 2 Again, uses the same second json file-->
+    <site-copy-provider lang="en" siteid="vanilla-js-testing-2" url="/data2.json">
+      <div class="py-[50px] flex justify-center gap-[50px]">
+        <button data-lang="en" data-copy="cta1"></button>
+        <button data-lang="fr" data-copy="cta2"></button>
+      </div>
+    </site-copy-provider>
+    <!--End Provider 2-->
+    
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

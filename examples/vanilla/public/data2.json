@@ -1,0 +1,12 @@
+{
+    "vanilla-js-testing-2":{
+        "cta1":{
+            "en":"English",
+            "fr":"Anglais"
+        },
+        "cta2":{
+            "en":"French",
+            "fr":"Français"
+        }
+    }
+}

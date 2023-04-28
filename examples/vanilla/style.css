@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'bebas-neue';
+    src: url('/BebasNeue-Regular.ttf');
+}
+
+button{
+    padding:10px;
+    background-color:#ff034e;
+    color:#23102E;
+    border:1px solid #23102E;
+    font-weight:bold;
+}
+button:hover{
+    color:#ff034e;
+    background-color:#23102E;
+}
+
+p{
+    color:white;
+    opacity:60%;
+}
+
+span{
+    color:white;
+    display:block;
+}
+span:nth-of-type(even){
+    opacity:60%;
+}
+h1{
+    font-family:'bebas-neue';
+    color:white;
+    font-size:96px;
+    line-height:80%
+}
+@media screen and (min-width:768px){
+    h1{
+        font-size:172px
+    }
+}
+header{
+    height:90vh;
+    overflow:hidden;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}

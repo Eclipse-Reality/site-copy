@@ -1,0 +1,26 @@
+{
+    "vanilla-js-testing":{
+        "components":{
+            "headerBanner":{
+                "mainText":{
+                    "word1":{
+                        "en":"Eclipse",
+                        "fr":"Éclipsez"
+                    },
+                    "word2":{
+                        "en":"Your",
+                        "fr":"votre"
+                    },
+                    "word3":{
+                        "en":"Reality",
+                        "fr":"réalité"
+                    }
+                },
+                "subText":{
+                    "en":"Empowering your digital innovation journey with AI",
+                    "fr":"Renforcez votre parcours d'innovation numérique avec l'IA"
+                }
+            }
+        }
+    }
+}
