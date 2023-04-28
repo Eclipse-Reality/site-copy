@@ -1,0 +1,26 @@
+{
+    "sap-sapphire-2023":{
+        "pages":{
+            "home":{
+                "components":{
+                    "heroBanner":{
+                        "mainText":"Home Page",
+                        "subText":"Home Page Subtext"
+                    }
+                }
+            },
+            "catalog":{
+                "components":{
+                    "heroBanner":{
+                        "mainText":"Session Catalog"
+                    },
+                    "abstractSection":{
+                        "description":"Below is the search tool to help you find all the sessions offered at SAP Sapphire Virtual 2023. Use the filters to narrow your selections. Enter a specific name or topic in the search bar to find a particular speaker or subject.",
+                        "ctaDescription":"Want to see curated sessions based on the topics of your interest?"
+                    }
+                }
+            }
+        },
+        "siteName":"SAP Sapphire 2023"
+    }
+}
