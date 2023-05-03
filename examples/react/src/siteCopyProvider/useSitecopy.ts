@@ -1,10 +1,10 @@
 import {useContext} from 'react';
 import { SitecopyContext } from './sitecopyProvider';
 
-export const useSitecopy = () => {
-    const sitecopy = useContext(SitecopyContext);
+export const useSitecopy = (filterKeys?:string) => {
+    const siteCopyConfig = useContext(SitecopyContext);
 
-    if(!sitecopy){
+    if(!siteCopyConfig){
         console.log('%c Eclipse Sitecopy - ',"color:#FF034E;background:#23102E" , 'Missing sitecopy context, make sure your App is wrapped in <SitecopyProvider>');
         return{
             sitecopy: undefined,
@@ -13,12 +13,36 @@ export const useSitecopy = () => {
         }
     }
 
-
-    //add query filtering in here
+    //Pre filter site copy object based on filterKeys param passed in (if present)
+    let siteCopy = siteCopyConfig.siteCopy;
+    if(filterKeys && siteCopy){
+        let splitFilterKeys = filterKeys.split('.');
+        splitFilterKeys.forEach( (key:string) => {
+            if(!siteCopy){
+                console.error('%c Eclipse Sitecopy - ',"color:#FF034E;background:#23102E" ,(`JSON at filterkey ${key} is undefined `));
+                return{
+                    sitecopy: undefined,
+                    isLoading: false,
+                    error: true
+                }
+            }
+            siteCopy = siteCopy[key] || undefined
+        })
+        if(!siteCopy){
+            console.error('error in useSiteCopy')
+            return{
+                sitecopy: undefined,
+                isLoading: false,
+                error: true
+            }
+        }
+    }
     
     return {
-        sitecopy: sitecopy?.sitecopyPages,
-        isLoading: sitecopy?.sitecopyLoading,
-        error: sitecopy?.error
+        siteCopy: siteCopy,
+        isLoading: siteCopyConfig?.sitecopyLoading,
+        error: siteCopyConfig?.error,
+        lang: siteCopyConfig.lang,
+        setLang:siteCopyConfig.setLang
     }
 }

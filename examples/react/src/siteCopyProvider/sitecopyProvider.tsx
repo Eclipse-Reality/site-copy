@@ -7,13 +7,14 @@ export const SitecopyContext = createContext<SitecopyClient | undefined>(undefin
 export const SitecopyProvider = (props:React.PropsWithChildren<SitecopyProviderProps>) => {
 
     //get the sitecopy from storage if present (using the passed cache key). Key is needed to pull from cache
+    !props.siteID && console.log('%c Eclipse Sitecopy - ',"color:#FF034E;background:#23102E" , 'No siteID passed into SitecopyProvider, cached copy will not load.');
     const siteCopyStorage = localStorage.getItem('ECLIPSE_SITECOPY') && JSON.parse(localStorage.getItem('ECLIPSE_SITECOPY') || '{}');
-    !props.cacheKey && console.log('%c Eclipse Sitecopy - ',"color:#FF034E;background:#23102E" , 'No cache key passed into SitecopyProvider, cached copy will not load.');
 
     let initialState = {
-        loading: siteCopyStorage && props.cacheKey && siteCopyStorage[props.cacheKey] ? false : true,
-        siteCopy: siteCopyStorage && props.cacheKey && siteCopyStorage[props.cacheKey] || undefined,
+        loading: siteCopyStorage && props.siteID && siteCopyStorage[props.siteID] ? false : true,
+        siteCopy: siteCopyStorage && props.siteID && siteCopyStorage[props.siteID] || undefined,
         error:false,
+        lang: (props.siteID && siteCopyStorage && siteCopyStorage[props.siteID].clientLang) || props.defaultLang  || null,
     }
 
     const [sitecopyState,dispatch] = useReducer(siteCopyReducer,initialState);
@@ -34,13 +35,23 @@ export const SitecopyProvider = (props:React.PropsWithChildren<SitecopyProviderP
     
     return (
         <SitecopyContext.Provider value={{
-            sitecopyPages: sitecopyState.siteCopy?.pages,
+            siteCopy: sitecopyState.siteCopy,
             sitecopyLoading:sitecopyState.loading,
             error:sitecopyState.error,
+            lang:sitecopyState.lang,
+            setLang: (newLang:string) => changeLanguage(newLang)
         }}>
             {props.children}
         </SitecopyContext.Provider>
     )
+
+    function changeLanguage(newLang:string){
+      if(sitecopyState.lang === newLang){return}
+      dispatch({
+        type:'lang-change',
+        newLang:newLang
+      }) 
+    }
 
     function siteCopyReducer(state: SiteCopyHookState,action:SiteCopyReducerActions){
         switch(action.type){
@@ -48,6 +59,10 @@ export const SitecopyProvider = (props:React.PropsWithChildren<SitecopyProviderP
             if(!siteCopyStorage){
               localStorage.setItem('ECLIPSE_SITECOPY', JSON.stringify(action.siteCopy));
             }else{
+              //if lang is set in storage under this site id, make sure it is appended on when the new storage is set
+              if(state.lang){
+                action.siteCopy[Object.keys(action.siteCopy)[0]].clientLang = state.lang;
+              }
               //if storage exists, spread this copy object into it and set it again (to hold multiple site copies in cache under one storage key)
               let newSiteCopyStorage = {...siteCopyStorage, ...action.siteCopy};
               localStorage.setItem('ECLIPSE_SITECOPY',JSON.stringify(newSiteCopyStorage));
@@ -65,6 +80,14 @@ export const SitecopyProvider = (props:React.PropsWithChildren<SitecopyProviderP
               loading:false,
               error:true,
             }
+          case 'lang-change': {
+            siteCopyStorage[Object.keys(siteCopyStorage)[0]].clientLang = action.newLang;
+            localStorage.setItem('ECLIPSE_SITECOPY',JSON.stringify(siteCopyStorage));
+            return {
+              ...state,
+              lang: action.newLang
+            }
+          }
         }
       }
 }
