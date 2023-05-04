@@ -1,22 +1,56 @@
 {
     "sap-sapphire-2023":{
+        "languages":{
+            "english":{
+                "title":"English",
+                "code":"en"
+            },
+            "spanish":{
+                "title":"Spanish",
+                "code":"es"
+            },
+            "french":{
+                "title":"French",
+                "code":"fr"
+            }
+        },
         "pages":{
             "home":{
                 "components":{
                     "heroBanner":{
-                        "mainText":"Home Page",
-                        "subText":"Home Page Subtext"
+                        "mainText":{
+                            "en":"Home Page",
+                            "es":"Página de inicio",
+                            "fr":"Page d'accueil"
+                        },
+                        "subText":{
+                            "en":"Home Page Subtext",
+                            "es":"Subtexto de la página de inicio",
+                            "fr":"Sous-texte de la page d'accueil"
+                        }
                     }
                 }
             },
             "catalog":{
                 "components":{
                     "heroBanner":{
-                        "mainText":"Session Catalog"
+                        "mainText":{
+                            "en":"Session Catalog",
+                            "es":"Catálogo de sesiones",
+                            "fr":"Catalogue des sessions"
+                        }
                     },
                     "abstractSection":{
-                        "description":"Below is the search tool to help you find all the sessions offered at SAP Sapphire Virtual 2023. Use the filters to narrow your selections. Enter a specific name or topic in the search bar to find a particular speaker or subject.",
-                        "ctaDescription":"Want to see curated sessions based on the topics of your interest?"
+                        "description":{
+                            "en":"Below is the search tool to help you find all the sessions offered at SAP Sapphire Virtual 2023. Use the filters to narrow your selections. Enter a specific name or topic in the search bar to find a particular speaker or subject.",
+                            "es":"A continuación se muestra la herramienta de búsqueda para ayudarlo a encontrar todas las sesiones que se ofrecen en SAP Sapphire Virtual 2023. Use los filtros para limitar sus selecciones. Ingrese un nombre o tema específico en la barra de búsqueda para encontrar un orador o tema en particular.",
+                            "fr":"Vous trouverez ci-dessous l'outil de recherche pour vous aider à trouver toutes les sessions proposées à SAP Sapphire Virtual 2023. Utilisez les filtres pour affiner vos sélections. Entrez un nom ou un sujet spécifique dans la barre de recherche pour trouver un orateur ou un sujet particulier."
+                        },
+                        "ctaDescription":{
+                            "en":"Want to see curated sessions based on the topics of your interest?",
+                            "es":"¿Quiere ver sesiones seleccionadas basadas en los temas de su interés?",
+                            "fr":"Vous voulez voir des sessions organisées en fonction des sujets qui vous intéressent ?"
+                        }
                     }
                 }
             }
