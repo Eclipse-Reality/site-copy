@@ -14,7 +14,7 @@ export const SitecopyProvider = (props:React.PropsWithChildren<SitecopyProviderP
         loading: siteCopyStorage && props.siteID && siteCopyStorage[props.siteID] ? false : true,
         siteCopy: siteCopyStorage && props.siteID && siteCopyStorage[props.siteID] || undefined,
         error:false,
-        lang: (props.siteID && siteCopyStorage && siteCopyStorage[props.siteID].clientLang) || props.defaultLang  || null,
+        lang: (props.siteID && siteCopyStorage && siteCopyStorage[props.siteID] && siteCopyStorage[props.siteID].clientLang) || props.defaultLang  || null,
     }
 
     const [sitecopyState,dispatch] = useReducer(siteCopyReducer,initialState);
