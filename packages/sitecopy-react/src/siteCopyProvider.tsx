@@ -2,9 +2,9 @@ import { createContext, useEffect, useReducer } from "react";
 import { SitecopyClient, SiteCopyHookState,SiteCopyReducerActions } from "./types";
 
 
-export const SitecopyContext = createContext<SitecopyClient | undefined>(undefined)
+export const SiteCopyContext = createContext<SitecopyClient | undefined>(undefined)
 
-export const SitecopyProvider = (props:React.PropsWithChildren<{url:string, siteID?:string, defaultLang?:string | null}>) => {
+export const SiteCopyProvider = (props:React.PropsWithChildren<{url:string, siteID?:string, defaultLang?:string | null}>) => {
 
     //get the sitecopy from storage if present (using the passed cache key). Key is needed to pull from cache
     !props.siteID && console.log('%c Eclipse Sitecopy - ',"color:#FF034E;background:#23102E" , 'No siteID passed into SitecopyProvider, cached copy will not load.');
@@ -34,7 +34,7 @@ export const SitecopyProvider = (props:React.PropsWithChildren<{url:string, site
       },[])
     
     return (
-        <SitecopyContext.Provider value={{
+        <SiteCopyContext.Provider value={{
             siteCopy: sitecopyState.siteCopy,
             sitecopyLoading:sitecopyState.loading,
             error:sitecopyState.error,
@@ -42,7 +42,7 @@ export const SitecopyProvider = (props:React.PropsWithChildren<{url:string, site
             setLang: (newLang:string) => changeLanguage(newLang)
         }}>
             {props.children}
-        </SitecopyContext.Provider>
+        </SiteCopyContext.Provider>
     )
 
     function changeLanguage(newLang:string){

@@ -1,8 +1,8 @@
 import {useContext} from 'react';
-import { SitecopyContext } from './sitecopyProvider';
+import { SiteCopyContext } from './siteCopyProvider';
 
 export const useSitecopy = (filterKeys?:string) => {
-    const siteCopyConfig = useContext(SitecopyContext);
+    const siteCopyConfig = useContext(SiteCopyContext);
 
     if(!siteCopyConfig){
         console.log('%c Eclipse Sitecopy - ',"color:#FF034E;background:#23102E" , 'Missing sitecopy context, make sure your App is wrapped in <SitecopyProvider>');

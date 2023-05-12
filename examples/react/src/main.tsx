@@ -8,11 +8,8 @@ import { App } from './App';
 
 import { SitecopyProvider } from './siteCopyProvider';
 
-//const SiteCopyClient = new SiteCopyProvider('/data.json');
-
-
 ReactDOM.createRoot(document.querySelector('#root') as HTMLElement).render(
-  <SitecopyProvider url='/data.json' siteID='sap-sapphire-2023'>
+  <SitecopyProvider url='/data.json' siteID='sap-sapphire-2023' defaultLang={'en'}>
     <BrowserRouter>
       <Routes>
         <Route path='/*' element={<App/>}/>

@@ -4,7 +4,8 @@ import { useSitecopy } from "../siteCopyProvider";
 export const Catalog:React.FC<{}> = () => {
     
     const {siteCopy, setLang, lang} = useSitecopy('pages.catalog.components');
-    console.log(siteCopy)
+
+    if(!lang) return null
 
     return (<>
         <BlueHero heroText={siteCopy.heroBanner.mainText[lang || 'en']}/>
