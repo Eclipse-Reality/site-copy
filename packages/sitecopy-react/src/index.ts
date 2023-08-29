@@ -1,2 +1,4 @@
-export { SiteCopyProvider } from "./siteCopyProvider";
-export { useSitecopy } from "./useSitecopy";
+import { SiteCopyProvider } from "./siteCopyProvider";
+import { useSitecopy } from "./useSitecopy";
+
+export {SiteCopyProvider,useSitecopy};

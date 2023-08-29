@@ -21,13 +21,17 @@ export const SiteCopyProvider = (props:React.PropsWithChildren<{url:string, site
 
     //fetch the sitecopy and run a reducer action based on what's returned
     useEffect( () => {
-        fetch(props.url)
+        fetch(props.url,{
+          headers:{
+            "Cache-Control":'no-cache'
+          }
+        })
           .then( (response) => response.json())
           .then( (json) => dispatch({
             type:'sitecopy-returned',
             siteCopy:json
           }))
-          .catch((err) => dispatch({
+          .catch((_err) => dispatch({
             type:'fetch-error',
             error:true
           }))
