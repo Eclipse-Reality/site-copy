@@ -18,7 +18,9 @@ var SiteCopyProvider = function (props) {
     var _a = (0, react_1.useReducer)(siteCopyReducer, initialState), sitecopyState = _a[0], dispatch = _a[1];
     //fetch the sitecopy and run a reducer action based on what's returned
     (0, react_1.useEffect)(function () {
-        fetch(props.url)
+        fetch(props.url, {
+            cache: 'no-store'
+        })
             .then(function (response) { return response.json(); })
             .then(function (json) { return dispatch({
             type: 'sitecopy-returned',
